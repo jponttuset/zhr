@@ -19,9 +19,25 @@
     <link href="css/style.css" rel="stylesheet">
 	<link href="color/default.css" rel="stylesheet">
 
+	<script type="text/javascript">
+	function loadTable()
+	{
+		var table = document.getElementById("displayTable"); //give this ID to your table
+
+		for (var i = 0; i < 1; i++) {
+		    var row = table.insertRow();
+		    var cell = row.insertCell();
+		    cell.innerHTML = "a";
+		    var cell = row.insertCell();
+		    cell.innerHTML = "b";
+		    var cell = row.insertCell();
+		    cell.innerHTML = "c";
+		}
+	}
+	</script>
 </head>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom" onload="loadTable()">
 	<!-- Preloader -->
 	<div id="preloader">
 	  <div id="load"></div>
@@ -30,27 +46,121 @@
   
 
 	<!-- Section: intro -->
-    <section id="intro" class="intro">
+  <!--   <section id="intro" class="intro">
 	
 		<div class="slogan">
 			<h2>Zürich Happy Runners </h2>
 			<h4>We are an awesome running group in Zürich</h4>
 		</div>
 		<div class="page-scroll">
-			<a href="#footer" class="btn btn-circle">
+			<a href="#about" class="btn btn-circle">
+				<i class="fa fa-angle-double-down animated"></i>
+			</a>
+		</div>
+    </section> -->
+	<!-- /Section: intro -->
+
+		<!-- Section: intro -->
+    <section id="intro" class="intro">
+		<div class="slogan">
+			<img src="img/zhr/BannerWeb.png" alt="" />
+			<h4>WE ARE GROUP OF FRIENDLY RUNNERS OF ALL LEVELS WHO GATHER FOR FUN</h4>
+		</div>
+		<div class="page-scroll">
+			<a href="#about" class="btn btn-circle">
 				<i class="fa fa-angle-double-down animated"></i>
 			</a>
 		</div>
     </section>
 	<!-- /Section: intro -->
 
+
+
+
+	<!-- Section: about -->
+    <section id="about" class="home-section text-center">
+		<div class="heading-about">
+			<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<div class="wow bounceInDown" data-wow-delay="0.4s">
+					<div class="section-heading">
+					<h2>Organizer Team</h2>
+					<!-- <i class="fa fa-2x fa-angle-down"></i> -->
+
+					</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class="container">
+
+		<div class="row">
+			<div class="col-lg-2 col-lg-offset-5">
+				<hr class="marginbot-50">
+			</div>
+		</div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-3 col-md-3">
+				<div class="wow bounceInUp" data-wow-delay="0.2s">
+                <div class="team boxed-grey">
+                    <div class="inner">
+						<h5>Jordi</h5>
+                        <p class="subtitle">Give me trails!</p>
+                        <div class="avatar"><img src="img/team/Jordi.png" alt="" class="img-responsive img-circle" /></div>
+                    </div>
+                </div>
+				</div>
+            </div>
+			<div class="col-xs-6 col-sm-3 col-md-3">
+				<div class="wow bounceInUp" data-wow-delay="0.5s">
+                <div class="team boxed-grey">
+                    <div class="inner">
+						<h5>Mireia</h5>
+                        <p class="subtitle">Orienteering is fun!</p>
+                        <div class="avatar"><img src="img/team/Mireia.png" alt="" class="img-responsive img-circle" /></div>
+                    </div>
+                </div>
+				</div>
+            </div>
+			<div class="col-xs-6 col-sm-3 col-md-3">
+				<div class="wow bounceInUp" data-wow-delay="0.8s">
+                <div class="team boxed-grey">
+                    <div class="inner">
+						<h5>Tijana</h5>
+                        <p class="subtitle">Bike, ski, run, you name it!</p>
+                        <div class="avatar"><img src="img/team/Tijana.png" alt="" class="img-responsive img-circle" /></div>
+                    </div>
+                </div>
+				</div>
+            </div>
+			<div class="col-xs-6 col-sm-3 col-md-3">
+				<div class="wow bounceInUp" data-wow-delay="1s">
+                <div class="team boxed-grey">
+                    <div class="inner">
+						<h5>Alex</h5>
+                        <p class="subtitle">Let's do some abs!</p>
+                        <div class="avatar"><img src="img/team/Alex.jpeg" alt="" class="img-responsive img-circle" /></div>
+                    </div>
+                </div>
+				</div>
+            </div>
+        </div>		
+		</div>
+	</section>
+	<!-- /Section: about -->
+
+
+	<!-- Section: table -->
+
+	<!-- /Section: table -->
+
 	<footer>
 		<div id="footer" class="container">
 			<div class="row">
-
 				<div class="col-md-12 col-lg-12">
-				    <p>We are building our site, so please come back really soon!<br>
-				    In the meantime, you can find us in <a style="color: #FFFFFF;" href="http://www.meetup.com/Zurich-Happy-Runners/" target="_blank">Meetup</a></p>
+				    <p>You can find everything about us in <a style="color: #FFFFFF;" href="http://www.meetup.com/Zurich-Happy-Runners/" target="_blank">Meetup</a></p>
 					<div class="wow shake" data-wow-delay="0.4s">
 					<div class="page-scroll marginbot-30">
 						<a href="#intro" id="totop" class="btn btn-circle">
@@ -58,11 +168,16 @@
 						</a>
 					</div>
 					</div>
-					<p>&copy;Copyright 2015 - Zürich Happy Runners. All rights reserved.</p>
+					<p>&copy;Copyright 2016 - Zürich Happy Runners. All rights reserved.</p>
 				</div>
 			</div>	
 		</div>
 	</footer>
+
+
+
+
+
 
     <!-- Core JavaScript Files -->
     <script src="js/jquery.min.js"></script>
