@@ -20,47 +20,67 @@
 	<link href="color/default.css" rel="stylesheet">
 
 	<script type="text/javascript">
-	function loadTable()
-	{
-		var table = document.getElementById("displayTable"); //give this ID to your table
 
-		for (var i = 0; i < 1; i++) {
+	function fill_table(data)
+	{
+		var table = document.getElementById("displayTable");
+        var allRows = data.split(/\r?\n|\r/);
+        var N = allRows.length;
+        
+		for (var ii = 1; ii < N-1; ii++)
+		{
+	        var allElem = allRows[ii].split(",");
 		    var row = table.insertRow();
 		    var cell = row.insertCell();
-		    cell.innerHTML = "a";
+		    cell.innerHTML = parseInt(ii);
 		    var cell = row.insertCell();
-		    cell.innerHTML = "b";
+		    cell.innerHTML = allElem[0].substring(1,allElem[0].length-1);
 		    var cell = row.insertCell();
-		    cell.innerHTML = "c";
+		    cell.innerHTML = parseInt(allElem[1]);
 		}
 	}
+
+	function fill_table_from_CSV(file)
+	{
+	    var rawFile = new XMLHttpRequest();
+	    rawFile.open("GET", file, true);
+	    rawFile.onreadystatechange = function ()
+	    {
+	        if(rawFile.readyState === 4)
+	        {
+	            if(rawFile.status === 200 || rawFile.status == 0)
+	            {
+	                fill_table(rawFile.responseText)
+	            }
+	        }
+	    }
+	    rawFile.send(null);
+	}
+
+	function loadTable(date)
+	{
+		// Show the updated date
+		date_parts = date.split('-')
+		var d = new Date("20"+date_parts[2], parseInt(date_parts[0])-1, date_parts[1])
+		document.getElementById("dateupdated").innerHTML = d.toDateString();
+
+
+		// Read CSV and fill in the table
+		fill_table_from_CSV("csv_data/Zurich-Happy-Runners_Member_List_on_"+date+".csv")	
+	}
+
+
 	</script>
+
 </head>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-custom" onload="loadTable()">
+<body id="page-top" data-spy="scroll" onload="loadTable('11-19-16')">
 	<!-- Preloader -->
 	<div id="preloader">
 	  <div id="load"></div>
 	</div>
 
-  
-
 	<!-- Section: intro -->
-  <!--   <section id="intro" class="intro">
-	
-		<div class="slogan">
-			<h2>Zürich Happy Runners </h2>
-			<h4>We are an awesome running group in Zürich</h4>
-		</div>
-		<div class="page-scroll">
-			<a href="#about" class="btn btn-circle">
-				<i class="fa fa-angle-double-down animated"></i>
-			</a>
-		</div>
-    </section> -->
-	<!-- /Section: intro -->
-
-		<!-- Section: intro -->
     <section id="intro" class="intro">
 		<div class="slogan">
 			<img src="img/zhr/BannerWeb.png" alt="" />
@@ -153,7 +173,41 @@
 
 
 	<!-- Section: table -->
-
+    <section id="table" class="home-section text-center bg-gray">
+		<div class="heading-about">
+			<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<!-- <div class="wow bounceInDown" data-wow-delay="0.4s"> -->
+					<div class="section-heading">
+					<h2>Hall of Fame</h2>
+					Our most committed members (Updated <span id=dateupdated></span>)
+					<!-- <i class="fa fa-2x fa-angle-down"></i> -->
+					</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class="container">
+		<div class="row">
+			<div class="col-lg-2 col-lg-offset-5">
+				<hr class="marginbot-50">
+			</div>
+		</div>
+        <div class="row">
+        <center>
+            <table id="displayTable" style="width:50%; text-align: center">
+			  <tr>
+			    <th style="text-align: center">Ranking Position</th>
+			    <th style="text-align: center">Meetup Username</th> 
+			    <th style="text-align: center">Runs Attended</th>
+			  </tr>
+			</table>
+		</center>
+        </div>		
+		</div>
+	</section>
 	<!-- /Section: table -->
 
 	<footer>
